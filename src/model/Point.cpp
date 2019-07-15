@@ -1,5 +1,5 @@
 #include "Point.h"
-
+#include "Util.h"
 #include <cmath>
 
 Point::Point()
@@ -11,26 +11,26 @@ Point::Point(const Point& p)
 {
 	XOJ_INIT_TYPE(Point);
 
-	this->x = p.x;
-	this->y = p.y;
-	this->z = p.z;
+	this->x = Util::setPrecision(p.x, DECIMAL_PLACES);
+	this->y = Util::setPrecision(p.y, DECIMAL_PLACES);
+	this->z = Util::setPrecision(p.z, DECIMAL_PLACES);
 }
 
 Point::Point(double x, double y)
 {
 	XOJ_INIT_TYPE(Point);
 
-	this->x = x;
-	this->y = y;
+	this->x = Util::setPrecision(x, DECIMAL_PLACES);
+	this->y = Util::setPrecision(y, DECIMAL_PLACES);
 }
 
 Point::Point(double x, double y, double z)
 {
 	XOJ_INIT_TYPE(Point);
 
-	this->x = x;
-	this->y = y;
-	this->z = z;
+	this->x = Util::setPrecision(x, DECIMAL_PLACES);
+	this->y = Util::setPrecision(y, DECIMAL_PLACES);
+	this->z = Util::setPrecision(z, DECIMAL_PLACES);
 }
 
 Point::~Point()

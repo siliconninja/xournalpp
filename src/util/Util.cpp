@@ -165,3 +165,8 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused
 	return false;
 }
 
+double Util::setPrecision(double number, double decimalPlaces)
+{
+	int factor = 10 * decimalPlaces;
+	return floor(number * factor) / factor;
+}
