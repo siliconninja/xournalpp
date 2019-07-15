@@ -1,3 +1,4 @@
+#include "Util.h"
 #include "XmlStrokeNode.h"
 
 XmlStrokeNode::XmlStrokeNode(const char* tag) : XmlNode(tag)
@@ -88,10 +89,11 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 	{
 		out->write(">");
 
-		char tmpX[G_ASCII_DTOSTR_BUF_SIZE];
-		g_ascii_dtostr( tmpX, G_ASCII_DTOSTR_BUF_SIZE, points[0].x);
-		char tmpY[G_ASCII_DTOSTR_BUF_SIZE];
-		g_ascii_dtostr( tmpY, G_ASCII_DTOSTR_BUF_SIZE, points[0].y);
+		const char* tmpX;
+		tmpX = Util::doubleToStrWithPrecision(points[0].x, 4);
+		
+		const char* tmpY;		
+		tmpY = Util::doubleToStrWithPrecision(points[0].y, 4);
 
 		char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
 		out->write(tmp);
@@ -99,12 +101,14 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 
 		for (int i = 1; i < this->pointsLength; i++)
 		{
-			char tmpX[G_ASCII_DTOSTR_BUF_SIZE];
-			g_ascii_dtostr( tmpX, G_ASCII_DTOSTR_BUF_SIZE, points[i].x);
-			char tmpY[G_ASCII_DTOSTR_BUF_SIZE];
-			g_ascii_dtostr( tmpY, G_ASCII_DTOSTR_BUF_SIZE, points[i].y);
+			const char* tmpX;
+			tmpX = Util::doubleToStrWithPrecision(points[i].x, 4);
+			
+			const char* tmpY;
+			tmpY = Util::doubleToStrWithPrecision(points[i].y, 4);
 
 			char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
+			printf("%s\n", tmp);
 			out->write(" ");
 			out->write(tmp);
 			g_free(tmp);
