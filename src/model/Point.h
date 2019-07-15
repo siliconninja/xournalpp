@@ -98,10 +98,4 @@ public:
 	double z = NO_PRESSURE;
 
 	static constexpr double NO_PRESSURE = -1;
-
-	/**
-	 * @brief How many decimal places the x, y, and z coordinates should use.
-	 * If less decimal places are used, the smaller the file size will be.
-	 */
-	static constexpr int DECIMAL_PLACES = 4;
 };
