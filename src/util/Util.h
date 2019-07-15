@@ -56,11 +56,6 @@ public:
 
 	static gboolean paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused);
 
-	/**
-	 * Sets precision of a decimal number.
-	 */
-	static double setPrecision(double number, double decimalPlaces);
-
 };
 
 static const size_t size_t_npos = static_cast<size_t>(-1);
