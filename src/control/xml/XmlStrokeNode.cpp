@@ -108,7 +108,7 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 			tmpY = Util::doubleToStrWithPrecision(points[i].y, 4);
 
 			char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
-			printf("%s\n", tmp);
+			// printf("%s\n", tmp);
 			out->write(" ");
 			out->write(tmp);
 			g_free(tmp);
