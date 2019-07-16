@@ -89,26 +89,13 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 	{
 		out->write(">");
 
-		const char* tmpX;
-		tmpX = Util::doubleToStrWithPrecision(points[0].x, 4);
-		
-		const char* tmpY;		
-		tmpY = Util::doubleToStrWithPrecision(points[0].y, 4);
-
-		char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
+		char* tmp = Util::getCoordinateString(points[0].x, points[0].y);
 		out->write(tmp);
 		g_free(tmp);
 
 		for (int i = 1; i < this->pointsLength; i++)
 		{
-			const char* tmpX;
-			tmpX = Util::doubleToStrWithPrecision(points[i].x, 4);
-			
-			const char* tmpY;
-			tmpY = Util::doubleToStrWithPrecision(points[i].y, 4);
-
-			char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
-			// printf("%s\n", tmp);
+			char* tmp = Util::getCoordinateString(points[i].x, points[i].y);
 			out->write(" ");
 			out->write(tmp);
 			g_free(tmp);

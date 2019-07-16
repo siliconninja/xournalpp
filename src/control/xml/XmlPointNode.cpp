@@ -48,12 +48,8 @@ void XmlPointNode::writeOut(OutputStream* out)
 		{
 			out->write(" ");
 		}
-		const char* tmpX;
-		tmpX = Util::doubleToStrWithPrecision(p->x, 4);
-		const char* tmpY;
-		tmpY = Util::doubleToStrWithPrecision(p->y, 4);
 
-		char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
+		char* tmp = Util::getCoordinateString(p->x, p->y);
 		out->write(tmp);
 		g_free(tmp);
 		
