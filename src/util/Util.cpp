@@ -166,14 +166,19 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused
 	return false;
 }
 
-char* Util::doubleToStrWithPrecision(double number, int decimalPlaces)
+std::string Util::doubleToStrWithPrecision(double number, int decimalPlaces)
 {
-	
 	std::stringstream ss;
 	ss << std::setprecision(decimalPlaces) << std::fixed << number;
-	/* .c_str() is needed because we use g_strdup_printf to save to the file
-	https://stackoverflow.com/a/18984900 */
-	
-	//printf("%f VS %s\n", number, ss.str().c_str());
-	return (char*) ss.str().c_str();
+	return ss.str();
+}
+
+char* Util::getCoordinateString(double xVal, double yVal)
+{
+	const char* tmpX;
+	tmpX = Util::doubleToStrWithPrecision(xVal, PRECISION_DECIMAL_PLACES).c_str();
+	const char* tmpY;
+	tmpY = Util::doubleToStrWithPrecision(yVal, PRECISION_DECIMAL_PLACES).c_str();
+
+	return g_strdup_printf("%s %s", tmpX, tmpY);
 }
