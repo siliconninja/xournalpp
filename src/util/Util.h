@@ -56,6 +56,7 @@ public:
 
 	static gboolean paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused);
 
+	static char* doubleToStrWithPrecision(double number, int decimalPlaces);
 };
 
 static const size_t size_t_npos = static_cast<size_t>(-1);

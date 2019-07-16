@@ -54,7 +54,6 @@ void XmlPointNode::writeOut(OutputStream* out)
 		tmpY = Util::doubleToStrWithPrecision(p->y, 4);
 
 		char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
-
 		out->write(tmp);
 		g_free(tmp);
 		
