@@ -6,9 +6,10 @@
 #include <StringUtils.h>
 #include <XojMsgBox.h>
 
+#include <iomanip>
+#include <sstream>
 #include <sys/types.h>
 #include <unistd.h>
-
 
 class CallbackUiData {
 public:
@@ -165,3 +166,14 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused
 	return false;
 }
 
+char* Util::doubleToStrWithPrecision(double number, int decimalPlaces)
+{
+	
+	std::stringstream ss;
+	ss << std::setprecision(decimalPlaces) << std::fixed << number;
+	/* .c_str() is needed because we use g_strdup_printf to save to the file
+	https://stackoverflow.com/a/18984900 */
+	
+	//printf("%f VS %s\n", number, ss.str().c_str());
+	return (char*) ss.str().c_str();
+}
