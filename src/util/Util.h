@@ -56,8 +56,6 @@ public:
 
 	static gboolean paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused);
 
-	static std::string doubleToStrWithPrecision(double number, int decimalPlaces);
-
 	static char* getCoordinateString(double xVal, double yVal);
 };
 
