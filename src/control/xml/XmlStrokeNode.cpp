@@ -68,13 +68,14 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 	out->write(" width=\"");
 	
 	char tmp[G_ASCII_DTOSTR_BUF_SIZE];
-	g_ascii_dtostr( tmp, G_ASCII_DTOSTR_BUF_SIZE,width);	//  g_ascii_ version uses C locale always.
+	// g_ascii_ version uses C locale always.
+	g_ascii_formatd(tmp, G_ASCII_DTOSTR_BUF_SIZE, Util::getFormatdPrecisionString(), width);
 	out->write(tmp);
 
 	for (int i = 0; i < widthsLength; i++)
 	{
 		char tmp[G_ASCII_DTOSTR_BUF_SIZE];
-		g_ascii_dtostr( tmp, G_ASCII_DTOSTR_BUF_SIZE,widths[i]);
+		g_ascii_formatd(tmp, G_ASCII_DTOSTR_BUF_SIZE, Util::getFormatdPrecisionString(), widths[i]);
 		out->write(" ");
 		out->write(tmp);
 	}

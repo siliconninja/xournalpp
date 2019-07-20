@@ -169,9 +169,14 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused
 char* Util::getCoordinateString(double xVal, double yVal)
 {
 	char tmpX[G_ASCII_DTOSTR_BUF_SIZE];
-	g_ascii_formatd(tmpX, G_ASCII_DTOSTR_BUF_SIZE, "%.4f", xVal);
+	g_ascii_formatd(tmpX, G_ASCII_DTOSTR_BUF_SIZE, Util::getFormatdPrecisionString(), xVal);
 	char tmpY[G_ASCII_DTOSTR_BUF_SIZE];
-	g_ascii_formatd(tmpY, G_ASCII_DTOSTR_BUF_SIZE, "%.4f", yVal);
+	g_ascii_formatd(tmpY, G_ASCII_DTOSTR_BUF_SIZE, Util::getFormatdPrecisionString(), yVal);
 
 	return g_strdup_printf("%s %s", tmpX, tmpY);
+}
+
+char* Util::getFormatdPrecisionString()
+{
+	return g_strdup_printf("%%.%df", PRECISION_DECIMAL_PLACES);
 }
