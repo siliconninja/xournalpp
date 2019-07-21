@@ -271,6 +271,10 @@ public:
 	bool isAutosaveEnabled();
 	void setAutosaveEnabled(bool autosave);
 
+	int getPrecisionDecimalPlaces();
+	void setPrecisionDecimalPlaces(int decimalPlaces);
+
+
 	bool getAddVerticalSpace();
 	void setAddVerticalSpace(bool space);
 	int  getAddVerticalSpaceAmount();
@@ -661,6 +665,13 @@ private:
 	 *  Enable automatic save
 	 */
 	bool autosaveEnabled;
+
+	/**
+	 * How many decimal places that each coordinate uses when they are saved to
+	 * a journal file. Saving with reduced precision reduces file size but also
+	 * reduces quality. 
+	 */
+	int precisionDecimalPlaces;
 
 	/**
 	 * Allow scroll outside the page display area (horizontal)

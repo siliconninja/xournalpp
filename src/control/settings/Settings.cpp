@@ -89,6 +89,9 @@ void Settings::loadDefault()
 	this->autosaveTimeout = 3;
 	this->autosaveEnabled = true;
 
+	this->saveWithReducedPrecision = false;
+	this->precisionDecimalPlaces = 15;
+
 	this->addHorizontalSpace = false;
 	this->addHorizontalSpaceAmount = 150;
 	this->addVerticalSpace = false;
@@ -464,6 +467,10 @@ void Settings::parseItem(xmlDocPtr doc, xmlNodePtr cur)
 	else if (xmlStrcmp(name, (const xmlChar*) "autosaveEnabled") == 0)
 	{
 		this->autosaveEnabled = xmlStrcmp(value, (const xmlChar*) "true") ? false : true;
+	}
+	else if (xmlStrcmp(name, (const xmlChar*) "saveWithReducedPrecision") == 0)
+	{
+		this->saveWithReducedPrecision = xmlStrcmp(value, (const xmlChar*) "true") ? false : true;
 	}
 	else if (xmlStrcmp(name, (const xmlChar*) "autosaveTimeout") == 0)
 	{
@@ -986,6 +993,8 @@ void Settings::save()
 	WRITE_BOOL_PROP(autosaveEnabled);
 	WRITE_INT_PROP(autosaveTimeout);
 
+	WRITE_INT_PROP(precisionDecimalPlaces);
+
 	WRITE_BOOL_PROP(addHorizontalSpace);
 	WRITE_INT_PROP(addHorizontalSpaceAmount);	
 	WRITE_BOOL_PROP(addVerticalSpace);
@@ -1263,6 +1272,22 @@ void Settings::setAutosaveEnabled(bool autosave)
 	this->autosaveEnabled = autosave;
 
 	save();
+}
+
+void Settings::setPrecisionDecimalPlaces(int decimalPlaces)
+{
+	XOJ_CHECK_TYPE(Settings);
+
+	this->precisionDecimalPlaces = decimalPlaces;
+
+	save();
+}
+
+int Settings::getPrecisionDecimalPlaces()
+{
+	XOJ_CHECK_TYPE(Settings);
+
+	return this->precisionDecimalPlaces;
 }
 
 bool Settings::getAddVerticalSpace()
