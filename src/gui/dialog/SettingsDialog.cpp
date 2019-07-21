@@ -268,17 +268,6 @@ void SettingsDialog::load()
 	GtkWidget* spAutosaveTimeout = get("spAutosaveTimeout");
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spAutosaveTimeout), settings->getAutosaveTimeout());
 
-	// TODO add this spinner using GTK Glade
-	// TODO give the spinner a minimum of 1 decimal place, and a maximum of 15 decimal places
-	// TODO add help text below it saying something like:
-	/** How many decimal places that each coordinate uses when they are saved to
-	 * a journal file. Saving with reduced precision reduces file size but also
-	 * reduces quality.
-	 * Recommended: 15 for maximum quality, 4 for optimal file size and quality
-	 */ 
-	GtkWidget* spPrecisionDecimalPlaces = get("spPrecisionDecimalPlaces"); 
-	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spPrecisionDecimalPlaces), settings->getPrecisionDecimalPlaces());
-
 	GtkWidget* spPairsOffset = get("spPairsOffset");
 	gtk_spin_button_set_value(GTK_SPIN_BUTTON(spPairsOffset), settings->getPairsOffset());
 

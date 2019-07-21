@@ -178,7 +178,5 @@ char* Util::getCoordinateString(double xVal, double yVal)
 
 char* Util::getFormatdPrecisionString()
 {
-	// TODO this is the line that causes the failure. Somehow find a way to access settings from
-	// Util class.
-	return g_strdup_printf("%%.%df", settings->precisionDecimalPlaces);
+	return g_strdup_printf("%%.%df", PRECISION_DECIMAL_PLACES);
 }
