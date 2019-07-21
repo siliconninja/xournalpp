@@ -89,7 +89,6 @@ void Settings::loadDefault()
 	this->autosaveTimeout = 3;
 	this->autosaveEnabled = true;
 
-	this->saveWithReducedPrecision = false;
 	this->precisionDecimalPlaces = 15;
 
 	this->addHorizontalSpace = false;
@@ -468,9 +467,9 @@ void Settings::parseItem(xmlDocPtr doc, xmlNodePtr cur)
 	{
 		this->autosaveEnabled = xmlStrcmp(value, (const xmlChar*) "true") ? false : true;
 	}
-	else if (xmlStrcmp(name, (const xmlChar*) "saveWithReducedPrecision") == 0)
+	else if (xmlStrcmp(name, (const xmlChar*) "precisionDecimalPlaces") == 0)
 	{
-		this->saveWithReducedPrecision = xmlStrcmp(value, (const xmlChar*) "true") ? false : true;
+		this->precisionDecimalPlaces = g_ascii_strtoll((const char*) value, NULL, 10);
 	}
 	else if (xmlStrcmp(name, (const xmlChar*) "autosaveTimeout") == 0)
 	{
