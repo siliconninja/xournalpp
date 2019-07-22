@@ -58,10 +58,9 @@ public:
 
 	static char* getCoordinateString(double xVal, double yVal);
 	
-	static char* getFormatdPrecisionString();
+	// use 8 digits of precision https://m.xkcd.com/2170/ 
+	static const char* PRECISION_FORMAT_STRING = ".%8f";
 };
 
 static const size_t size_t_npos = static_cast<size_t>(-1);
 // for 64b systems it's 18446744073709551615 and for 32b – 4294967295
-
-static const int PRECISION_DECIMAL_PLACES = 4;
