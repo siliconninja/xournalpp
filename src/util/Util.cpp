@@ -11,6 +11,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+const char* Util::PRECISION_FORMAT_STRING = "%.8f";
+
 class CallbackUiData {
 public:
 	CallbackUiData(std::function<void()> callback)
@@ -166,7 +168,7 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused
 	return false;
 }
 
-char* Util::getCoordinateString(double xVal, double yVal)
+gchar* Util::getCoordinateString(double xVal, double yVal)
 {
 	char tmpX[G_ASCII_DTOSTR_BUF_SIZE];
 	g_ascii_formatd(tmpX, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, xVal);
@@ -174,7 +176,7 @@ char* Util::getCoordinateString(double xVal, double yVal)
 	g_ascii_formatd(tmpY, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, yVal);
 
 	int length = strlen(tmpX) + 1 + strlen(tmpY) + 1;
-	char coordinateStringBuffer[length];
+	gchar* coordinateStringBuffer = static_cast<gchar*>(g_malloc(length * sizeof(char)));
 	g_snprintf(coordinateStringBuffer, length, "%s %s", tmpX, tmpY);
-	return buffer;
+	return coordinateStringBuffer;
 }

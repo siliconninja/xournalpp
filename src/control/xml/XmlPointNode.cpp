@@ -49,7 +49,7 @@ void XmlPointNode::writeOut(OutputStream* out)
 			out->write(" ");
 		}
 
-		char* tmp = Util::getCoordinateString(p->x, p->y);
+		gchar* tmp = Util::getCoordinateString(p->x, p->y);
 		out->write(tmp);
 		g_free(tmp);
 		

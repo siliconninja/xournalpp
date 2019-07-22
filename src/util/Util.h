@@ -56,10 +56,10 @@ public:
 
 	static gboolean paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused);
 
-	static char* getCoordinateString(double xVal, double yVal);
+	static gchar* getCoordinateString(double xVal, double yVal);
 	
 	// use 8 digits of precision https://m.xkcd.com/2170/ 
-	static const char* PRECISION_FORMAT_STRING = ".%8f";
+	static const char* PRECISION_FORMAT_STRING;
 };
 
 static const size_t size_t_npos = static_cast<size_t>(-1);
