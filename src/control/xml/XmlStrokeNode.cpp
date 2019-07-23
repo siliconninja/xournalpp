@@ -1,7 +1,8 @@
 #include "Util.h"
 #include "XmlStrokeNode.h"
 
-XmlStrokeNode::XmlStrokeNode(const char* tag) : XmlNode(tag)
+XmlStrokeNode::XmlStrokeNode(const char* tag)
+ : XmlNode(tag)
 {
 	XOJ_INIT_TYPE(XmlStrokeNode);
 
@@ -54,7 +55,6 @@ void XmlStrokeNode::setWidth(double width, double* widths, int widthsLength)
 		this->widths[i] = widths[i];
 	}
 	this->widthsLength = widthsLength;
-
 }
 
 void XmlStrokeNode::writeOut(OutputStream* out)
@@ -66,7 +66,7 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 	writeAttributes(out);
 
 	out->write(" width=\"");
-	
+
 	char tmp[G_ASCII_DTOSTR_BUF_SIZE];
 	// g_ascii_ version uses C locale always.
 	g_ascii_formatd(tmp, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, width);

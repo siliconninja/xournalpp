@@ -2,8 +2,8 @@
 #include "XmlPointNode.h"
 
 XmlPointNode::XmlPointNode(const char* tag)
- : XmlAudioNode(tag),
-   points(NULL)
+ : XmlAudioNode(tag)
+ , points(NULL)
 {
 	XOJ_INIT_TYPE(XmlPointNode);
 }
@@ -52,7 +52,6 @@ void XmlPointNode::writeOut(OutputStream* out)
 		gchar* tmp = Util::getCoordinateString(p->x, p->y);
 		out->write(tmp);
 		g_free(tmp);
-		
 	}
 
 	out->write("</");
