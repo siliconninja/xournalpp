@@ -1042,8 +1042,8 @@ void Settings::save()
 	xmlSetProp(xmlFont, (const xmlChar*) "font", (const xmlChar*) this->font.getName().c_str());
 
 	char sSize[G_ASCII_DTOSTR_BUF_SIZE];
-	
-	g_ascii_formatd(sSize, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, this->font.getSize()); // no locale
+
+	g_ascii_formatd(sSize, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, this->font.getSize());  // no locale
 	xmlSetProp(xmlFont, (const xmlChar*) "size", (const xmlChar*) sSize);
 
 
