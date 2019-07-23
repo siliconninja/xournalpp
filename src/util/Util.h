@@ -57,8 +57,8 @@ public:
 	static gboolean paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void* unused);
 
 	static gchar* getCoordinateString(double xVal, double yVal);
-
-	// use 8 digits of precision https://m.xkcd.com/2170/
+	
+	// use 8 digits of precision https://m.xkcd.com/2170/ 
 	static const char* PRECISION_FORMAT_STRING;
 };
 

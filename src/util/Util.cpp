@@ -6,15 +6,14 @@
 #include <StringUtils.h>
 #include <XojMsgBox.h>
 
+#include <iomanip>
 #include <sstream>
-#include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
 const char* Util::PRECISION_FORMAT_STRING = "%.8f";
 
-class CallbackUiData
-{
+class CallbackUiData {
 public:
 	CallbackUiData(std::function<void()> callback)
 	 : callback(callback)
@@ -66,8 +65,9 @@ void Util::apply_rgb_togdkrgba(GdkRGBA& col, int color)
 
 int Util::gdkrgba_to_hex(GdkRGBA& color)
 {
-	return (((int) (color.red * 255)) & 0xff) << 16 | (((int) (color.green * 255)) & 0xff) << 8 |
-	       (((int) (color.blue * 255)) & 0xff);
+	return (((int)(color.red * 255)) & 0xff) << 16 |
+			(((int)(color.green * 255)) & 0xff) << 8 |
+			(((int)(color.blue * 255)) & 0xff);
 }
 
 int Util::getPid()
@@ -124,18 +124,16 @@ void Util::openFileWithDefaultApplicaion(Path filename)
 {
 #ifdef __APPLE__
 #define OPEN_PATTERN "open \"{1}\""
-#elif _WIN32  // note the underscore: without it, it's not msdn official!
+#elif _WIN32 // note the underscore: without it, it's not msdn official!
 #define OPEN_PATTERN "start \"{1}\""
-#else  // linux, unix, ...
+#else // linux, unix, ...
 #define OPEN_PATTERN "xdg-open \"{1}\""
 #endif
 
 	string command = FS(FORMAT_STR(OPEN_PATTERN) % filename.getEscapedPath());
 	if (system(command.c_str()) != 0)
 	{
-		string msg = FS(_F("File couldn't be opened. You have to do it manually:\n"
-		                   "URL: {1}") %
-		                filename.str());
+		string msg = FS(_F("File couldn't be opened. You have to do it manually:\n" "URL: {1}") % filename.str());
 		XojMsgBox::showErrorToUser(NULL, msg);
 	}
 }
@@ -148,16 +146,14 @@ void Util::openFileWithFilebrowser(Path filename)
 #define OPEN_PATTERN "open \"{1}\""
 #elif WIN32
 #define OPEN_PATTERN "explorer.exe /n,/e,\"{1}\""
-#else  // linux, unix, ...
+#else // linux, unix, ...
 #define OPEN_PATTERN "nautilus \"file://{1}\" || dolphin \"file://{1}\" || konqueror \"file://{1}\" &"
 #endif
 
 	string command = FS(FORMAT_STR(OPEN_PATTERN) % filename.getEscapedPath());
 	if (system(command.c_str()) != 0)
 	{
-		string msg = FS(_F("File couldn't be opened. You have to do it manually:\n"
-		                   "URL: {1}") %
-		                filename.str());
+		string msg = FS(_F("File couldn't be opened. You have to do it manually:\n" "URL: {1}") % filename.str());
 		XojMsgBox::showErrorToUser(NULL, msg);
 	}
 }

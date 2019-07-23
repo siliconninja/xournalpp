@@ -1,8 +1,7 @@
 #include "DoubleArrayAttribute.h"
 #include "Util.h"
 
-DoubleArrayAttribute::DoubleArrayAttribute(const char* name, double* values, int count)
- : XMLAttribute(name)
+DoubleArrayAttribute::DoubleArrayAttribute(const char* name, double* values, int count) : XMLAttribute(name)
 {
 	XOJ_INIT_TYPE(DoubleArrayAttribute);
 
@@ -35,7 +34,7 @@ void DoubleArrayAttribute::writeOut(OutputStream* out)
 	for (int i = 1; i < this->count; i++)
 	{
 		char str[G_ASCII_DTOSTR_BUF_SIZE];
-
+		
 		// g_ascii_ version uses C locale always.
 		g_ascii_formatd(str, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, this->values[i]);
 		out->write(" ");
