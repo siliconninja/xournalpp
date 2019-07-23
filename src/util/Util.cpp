@@ -8,6 +8,7 @@
 
 #include <iomanip>
 #include <sstream>
+#include <string.h>
 #include <sys/types.h>
 #include <unistd.h>
 
