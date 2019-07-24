@@ -111,7 +111,7 @@ void PageBackgroundChangeController::changeCurrentPageBackground(PageType& pageT
 
 	Document* doc = control->getDocument();
 	size_t pageNr = doc->indexOf(page);
-	if (pageNr == size_t_npos)
+	if (pageNr == npos)
 	{
 		return;  // should not happen...
 	}
@@ -153,7 +153,7 @@ bool PageBackgroundChangeController::applyImageBackground(PageRef page)
 	if (!img.isEmpty())
 	{
 		page->setBackgroundImage(img);
-		page->setBackgroundType(PageType(":image"));
+		page->setBackgroundType(PageType(PageTypeFormat::Image));
 	}
 	else if (dlg.shouldShowFilechooser())
 	{
@@ -189,7 +189,7 @@ bool PageBackgroundChangeController::applyImageBackground(PageRef page)
 		else
 		{
 			page->setBackgroundImage(newImg);
-			page->setBackgroundType(PageType(":image"));
+			page->setBackgroundType(PageType(PageTypeFormat::Image));
 		}
 	}
 
@@ -200,7 +200,7 @@ bool PageBackgroundChangeController::applyImageBackground(PageRef page)
 		page->setSize(gdk_pixbuf_get_width(pixbuf), gdk_pixbuf_get_height(pixbuf));
 
 		size_t pageNr = doc->indexOf(page);
-		if (pageNr != size_t_npos)
+		if (pageNr != npos)
 		{
 			// Only if the page is already inserted into the document
 			control->firePageSizeChanged(pageNr);
@@ -327,7 +327,7 @@ void PageBackgroundChangeController::insertNewPage(size_t position)
 	PageRef current = control->getCurrentPage();
 
 	// current.isValid() should always be true, but if you open an invalid file or something like this...
-	if (pt.format == ":copy" && current.isValid())
+	if (pt.format == PageTypeFormat::Copy && current.isValid())
 	{
 		copyBackgroundFromOtherPage(page, current);
 	}
