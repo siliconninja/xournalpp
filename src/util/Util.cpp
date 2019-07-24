@@ -6,7 +6,6 @@
 #include <StringUtils.h>
 #include <XojMsgBox.h>
 
-#include <iomanip>
 #include <sstream>
 #include <string.h>
 #include <sys/types.h>
