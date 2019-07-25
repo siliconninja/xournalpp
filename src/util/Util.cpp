@@ -12,8 +12,6 @@
 #include <unistd.h>
 #include <utility>
 
-const char* Util::PRECISION_FORMAT_STRING = "%.8f";
-
 struct CallbackUiData
 {
 	explicit CallbackUiData(std::function<void()> callback)
