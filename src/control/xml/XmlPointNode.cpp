@@ -1,3 +1,4 @@
+#include "Util.h"
 #include "XmlPointNode.h"
 
 XmlPointNode::XmlPointNode(const char* tag)
@@ -47,12 +48,8 @@ void XmlPointNode::writeOut(OutputStream* out)
 		{
 			out->write(" ");
 		}
-		char tmpX[G_ASCII_DTOSTR_BUF_SIZE];
-		g_ascii_dtostr( tmpX, G_ASCII_DTOSTR_BUF_SIZE, p->x);
-		char tmpY[G_ASCII_DTOSTR_BUF_SIZE];
-		g_ascii_dtostr( tmpY, G_ASCII_DTOSTR_BUF_SIZE, p->y);
 
-		char* tmp = g_strdup_printf("%s %s", tmpX, tmpY);
+		gchar* tmp = Util::getCoordinateString(p->x, p->y);
 		out->write(tmp);
 		g_free(tmp);
 		
