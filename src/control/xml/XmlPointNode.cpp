@@ -49,10 +49,9 @@ void XmlPointNode::writeOut(OutputStream* out)
 			out->write(" ");
 		}
 
-		gchar* tmp = Util::getCoordinateString(p->x, p->y);
-		out->write(tmp);
-		g_free(tmp);
-		
+		gchar coordinateStr[Util::PRECISION_FORMAT_BUFF_LEN];
+		Util::getCoordinateString(coordinateStr, Util::PRECISION_FORMAT_BUFF_LEN, p->x, p->y);
+		out->write(coordinateStr);
 	}
 
 	out->write("</");

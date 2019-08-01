@@ -67,17 +67,16 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 
 	out->write(" width=\"");
 	
-	char tmp[G_ASCII_DTOSTR_BUF_SIZE];
+	char widthStr[G_ASCII_DTOSTR_BUF_SIZE];
 	// g_ascii_ version uses C locale always.
-	g_ascii_formatd(tmp, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, width);
-	out->write(tmp);
+	g_ascii_formatd(widthStr, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, width);
+	out->write(widthStr);
 
 	for (int i = 0; i < widthsLength; i++)
 	{
-		char tmp[G_ASCII_DTOSTR_BUF_SIZE];
-		g_ascii_formatd(tmp, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, widths[i]);
+		g_ascii_formatd(widthStr, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, widths[i]);
 		out->write(" ");
-		out->write(tmp);
+		out->write(widthStr);
 	}
 
 	out->write("\"");
@@ -90,16 +89,15 @@ void XmlStrokeNode::writeOut(OutputStream* out)
 	{
 		out->write(">");
 
-		char* tmp = Util::getCoordinateString(points[0].x, points[0].y);
-		out->write(tmp);
-		g_free(tmp);
+		gchar coordinateStr[Util::PRECISION_FORMAT_BUFF_LEN];
+		Util::getCoordinateString(coordinateStr, Util::PRECISION_FORMAT_BUFF_LEN, points[0].x, points[0].y);
+		out->write(coordinateStr);
 
 		for (int i = 1; i < this->pointsLength; i++)
 		{
-			char* tmp = Util::getCoordinateString(points[i].x, points[i].y);
+			Util::getCoordinateString(coordinateStr, Util::PRECISION_FORMAT_BUFF_LEN, points[i].x, points[i].y);
 			out->write(" ");
-			out->write(tmp);
-			g_free(tmp);
+			out->write(coordinateStr);
 		}
 
 		out->write("</");

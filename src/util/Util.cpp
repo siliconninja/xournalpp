@@ -173,15 +173,9 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void*)
 	return false;
 }
 
-gchar* Util::getCoordinateString(double xVal, double yVal)
+gchar* Util::getCoordinateString(gchar* buff, gulong buffLen, double xVal, double yVal)
 {
-	char tmpX[G_ASCII_DTOSTR_BUF_SIZE];
-	g_ascii_formatd(tmpX, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, xVal);
-	char tmpY[G_ASCII_DTOSTR_BUF_SIZE];
-	g_ascii_formatd(tmpY, G_ASCII_DTOSTR_BUF_SIZE, Util::PRECISION_FORMAT_STRING, yVal);
-
-	int length = strlen(tmpX) + 1 + strlen(tmpY) + 1;
-	gchar* coordinateStringBuffer = static_cast<gchar*>(g_malloc(length * sizeof(char)));
-	g_snprintf(coordinateStringBuffer, length, "%s %s", tmpX, tmpY);
-	return coordinateStringBuffer;
+	gchar* coordinateStringFormat = g_strconcat(Util::PRECISION_FORMAT_STRING, " ", Util::PRECISION_FORMAT_STRING, NULL);
+	g_snprintf(buff, buffLen, coordinateStringFormat, xVal, yVal);
+	return buff;
 }
