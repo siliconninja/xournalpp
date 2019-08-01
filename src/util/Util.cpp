@@ -175,7 +175,8 @@ gboolean Util::paintBackgroundWhite(GtkWidget* widget, cairo_t* cr, void*)
 
 gchar* Util::getCoordinateString(gchar* buff, gulong buffLen, double xVal, double yVal)
 {
-	gchar* coordinateStringFormat = g_strconcat(Util::PRECISION_FORMAT_STRING, " ", Util::PRECISION_FORMAT_STRING, NULL);
+	gchar* coordinateStringFormat =
+	        g_strconcat(Util::PRECISION_FORMAT_STRING, " ", Util::PRECISION_FORMAT_STRING, NULL);
 	g_snprintf(buff, buffLen, coordinateStringFormat, xVal, yVal);
 	return buff;
 }
