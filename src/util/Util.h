@@ -62,6 +62,8 @@ extern gchar* getCoordinateString(gchar* buff, gulong buffLen, double xVal, doub
 
 constexpr const gchar* PRECISION_FORMAT_STRING = "%.8f";
 
+constexpr const gchar* PRECISION_FORMAT_STRING_XY = "%.8f %.8f";
+
 constexpr const int PRECISION_FORMAT_BUFF_LEN = G_ASCII_DTOSTR_BUF_SIZE * 2 + 1;
 
 }  // namespace Util
