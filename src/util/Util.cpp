@@ -6,9 +6,6 @@
 #include "StringUtils.h"
 #include "XojMsgBox.h"
 
-#include <sstream>
-#include <string.h>
-#include <sys/types.h>
 #include <unistd.h>
 #include <utility>
 
