@@ -2376,6 +2376,7 @@ bool Control::openFile(Path filename, int scrollToPage, bool forceOpen)
 		string msg = FS(_F("Error opening file \"{1}\"") % filename.str()) + "\n" + loadHandler.getLastError();
 		XojMsgBox::showErrorToUser(getGtkWindow(), msg);
 
+		this->newFile();
 		fileLoaded(scrollToPage);
 		return false;
 	}
