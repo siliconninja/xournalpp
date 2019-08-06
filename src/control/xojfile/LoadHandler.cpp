@@ -300,7 +300,7 @@ bool LoadHandler::parseXml()
 	}
 	else if (this->pos == PASER_POS_FINISHED && this->doc.getPageCount() == 0)
 	{
-		lastError = _("Document has no pages, so it is corrupted");
+		lastError = _("Document is corrupted (no pages found in file)");
 		return false;
 	}
 
